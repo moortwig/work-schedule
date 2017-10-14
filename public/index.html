@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>WFM - Shifts</title>
+
+    <!-- <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'> -->
+    <link rel="stylesheet" type="text/css"  href="css/normalize.css">
+    <link rel="stylesheet" type="text/css"  href="css/style.css">
+</head>
+<body>
+<div class="wrapper">
+	<h2>Shifts</h2>
+
+	<div class="shifts-wrapper">
+		<div class="headings-container">
+			<div class="heading-item">Staff</div>
+			<div class="heading-item">Monday</div>
+			<div class="heading-item">Tuesday</div>
+			<div class="heading-item">Wednesday</div>
+			<div class="heading-item">Thursday</div>
+			<div class="heading-item">Friday</div>
+			<div class="heading-item">Saturday</div>
+			<div class="heading-item">Sunday</div>
+		</div><!-- .headings-container -->
+
+		<div id="shiftContainerData"></div>
+
+		<div class="total-hours-container" id="totalHours">
+			<div class="total-hours-item"><span>Total hours:</span></div>
+			<div class="data-cell-container" id="totalHoursContainerData"></div>
+		</div>
+
+		<div class="total-bonus-container" id="bonusMinutes">
+			<div class="total-bonus-item"><span>Minutes of bonus:</span></div>
+			<div class="data-cell-container" id="minutesBonusContainerData"></div>
+		</div>
+
+	</div><!-- .shifts-wrapper -->
+
+	<div id="errorContainerData"></div>
+</div><!-- .wrapper -->
+
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="js/main.js"></script>
+
+</body>
+</html>

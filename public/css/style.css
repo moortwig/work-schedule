@@ -1,0 +1,106 @@
+.wrapper {
+	color: #67655d;
+	font-family: 'Open Sans', sans-serif;
+	width: 90%;
+}
+
+.shifts-wrapper {
+	background-color: #eee;
+	border-spacing: 5px;
+	border: 1px solid #666666;
+	border: 1px solid silver;
+	display: table;
+	margin: auto;
+	width: auto;
+}
+
+.headings-container {
+	border: 1px solid silver;
+	clear: both;
+	display: table-row;
+	width: auto;
+}
+
+.heading-item {
+	background-color: #ccc;
+	border: 1px solid silver;
+	display: table-column;
+	float: left;
+	text-align: center;
+	width: 100px;
+}
+
+.shifts-container {
+	border: 1px solid silver;
+	clear: both;
+	display: table-row;
+	width: auto;
+}
+
+.staff-item {
+	background-color: #ccc;
+	border: 1px solid silver;
+	display: table-column;
+	float: left;
+	overflow: hidden;
+	width: 100px;
+}
+
+.shift-cell-container {
+	display: inline-block;
+}
+
+.shift-item {
+	background-color: #ccc;
+	border: 1px solid silver;
+	display: table-column;
+	float: left;
+	overflow: hidden;
+	width: 100px;
+}
+
+.empty-shift {
+	background-color: lightblue;
+}
+
+.shift-time-text {
+	font-size: 0.7em;
+}
+
+.total-hours-container {
+	border: 1px solid silver;
+	clear: both;
+	display: table-row;
+	width: auto;
+}
+
+.total-hours-item {
+	background-color: #ccc;
+	border: 1px solid silver;
+	display: table-column;
+	float: left;
+	width: 100px;
+}
+
+.total-hours-item span {
+	font-size: 0.7em;
+}
+
+.total-bonus-container {
+	border: 1px solid silver;
+	clear: both;
+	display: table-row;
+	width: auto;
+}
+
+.total-bonus-item {
+	background-color: #ccc;
+	border: 1px solid silver;
+	display: table-column;
+	float: left;
+	width: 100px;
+}
+
+.total-bonus-item span {
+	font-size: 0.7em;
+}
