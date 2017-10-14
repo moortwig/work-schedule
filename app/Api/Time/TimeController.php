@@ -31,32 +31,13 @@ class TimeController extends Controller
     public function bonusMinutes() {
         $shifts = $this->shiftRepo->getShiftsForHours()->toArray();
 
-        $totalLonely = [];
+        $response = [];
         for ($i = 0; $i < 7; $i++) {
-            $workDay = TimeSlotManager::getWorkDayArray();
-            $lonely = [];
-
+            $workDay = TimeSlotManager::getWorkDaySlotArray();
             $shiftsOnCurrentDay = $this->shiftRepo->getShiftsOnDay($shifts, $i);
-
-            foreach ($shiftsOnCurrentDay as $shift) {
-                $startTimeArray = TimeSlotManager::getTimeStampAsArray($shift['starttime']);
-                $endTimeArray = TimeSlotManager::getTimeStampAsArray($shift['endtime']);
-
-                $startUnit = TimeSlotManager::getTimeSlot($startTimeArray);
-                $endUnit = $startUnit + ($shift['workhours'] * 60);
-
-                for($j = $startUnit; $j < $endUnit; $j++) {
-                    $workDay[$j] += 1;
-                }
-            }
-
-            $lonely = count(array_where($workDay, function($value, $key) {
-                return $value === 1;
-            }));
-
-            $totalLonely[] = $lonely;
+            $response[] = $this->repo->getBonusMinutesOnDay($shiftsOnCurrentDay, $workDay);
         }
 
-        return response()->json($totalLonely);
+        return response()->json($response);
     }
 }

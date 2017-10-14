@@ -9,7 +9,7 @@ use Tests\TestCase;
 class TimeOverlapTest extends TestCase
 {
     public function testTimeDoesNotFullyOverlapWhenShiftsOnSameDay() {
-        $workDay = TimeSlotManager::getWorkDayArray();
+        $workDay = TimeSlotManager::getWorkDaySlotArray();
 
         $shifts = [
             [
@@ -70,7 +70,7 @@ class TimeOverlapTest extends TestCase
 
         $totalLonely = [];
         for ($i = 0; $i < 7; $i++) {
-            $workDay = TimeSlotManager::getWorkDayArray();
+            $workDay = TimeSlotManager::getWorkDaySlotArray();
             $lonely = [];
 
             $shiftsOnCurrentDay = array_where($shifts, function($value, $key) use($i) {

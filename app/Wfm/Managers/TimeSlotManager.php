@@ -32,7 +32,7 @@ class TimeSlotManager
         ];
 	}
 
-	static public function getWorkDayArray() {
+	static public function getWorkDaySlotArray() {
         $workDay = [];
 
 		for($i = 0; $i < 960; $i++) {

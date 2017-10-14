@@ -2,6 +2,7 @@
 
 namespace App\Api\Time;
 
+use App\Wfm\Managers\TimeSlotManager;
 use Illuminate\Support\Collection;
 
 class TimeRepository
@@ -23,5 +24,23 @@ class TimeRepository
     	$hours = $shiftsPerDay->pluck('workhours')->toArray();
 
     	return array_sum($hours);
+    }
+
+    public function getBonusMinutesOnDay($shifts, $day) {
+    	foreach ($shifts as $shift) {
+            $startTimeArray = TimeSlotManager::getTimeStampAsArray($shift['starttime']);
+            $endTimeArray = TimeSlotManager::getTimeStampAsArray($shift['endtime']);
+
+            $startUnit = TimeSlotManager::getTimeSlot($startTimeArray);
+            $endUnit = $startUnit + ($shift['workhours'] * 60);
+
+            for($j = $startUnit; $j < $endUnit; $j++) {
+                $day[$j] += 1;
+            }
+        }
+
+        return count(array_where($day, function($value, $key) {
+            return $value === 1;
+        }));
     }
 }
