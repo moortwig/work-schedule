@@ -1,5 +1,6 @@
-
 var app = {
+
+	baseUrl: 'http://work-schedule.dev/api/',
 
 	init: function() {
 		app.getShifts();
@@ -11,7 +12,7 @@ var app = {
 		var shiftContainer = document.getElementById('shiftContainerData');
 		shiftContainer.innerHTML = '';
 
-		axios.get('http://localhost/api/shifts')
+		axios.get(app.baseUrl + 'shifts')
 		.then(function (response) {
 			shiftContainer.innerHTML = app.renderShiftRows(response.data);
 			app.renderShiftCells(response.data);
@@ -26,7 +27,7 @@ var app = {
 		var container = document.getElementById('totalHoursContainerData');
 		container.innerHTML = '';
 
-		axios.get('http://localhost/api/hours')
+		axios.get(app.baseUrl + 'hours')
 		.then(function (response) {
 			container.innerHTML = app.renderTotalHourCells(response.data);
 
@@ -40,7 +41,7 @@ var app = {
 		var container = document.getElementById('minutesBonusContainerData');
 		container.innerHTML = '';
 
-		axios.get('http://localhost/api/bonusminutes')
+		axios.get(app.baseUrl + 'bonusminutes')
 		.then(function (response) {
 			container.innerHTML = app.renderBonusMinutesCells(response.data);
 		})
