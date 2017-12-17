@@ -13,7 +13,7 @@ class TimeRepository
     	$totalHoursPerDay = [];
 
         foreach ($daysOfWeek as $day) {
-        	$shiftsPerDay = $shifts->where('daynumber', $day);
+        	$shiftsPerDay = $shifts->where('day', $day);
         	$totalHoursPerDay[] = $this->getTotalHoursOnDay($shiftsPerDay);
         }
 
@@ -21,18 +21,18 @@ class TimeRepository
     }
 
     protected function getTotalHoursOnDay($shiftsPerDay) {
-    	$hours = $shiftsPerDay->pluck('workhours')->toArray();
+    	$hours = $shiftsPerDay->pluck('work_hours')->toArray();
 
     	return array_sum($hours);
     }
 
     public function getBonusMinutesOnDay($shifts, $day) {
     	foreach ($shifts as $shift) {
-            $startTimeArray = TimeSlotManager::getTimeStampAsArray($shift['starttime']);
-            $endTimeArray = TimeSlotManager::getTimeStampAsArray($shift['endtime']);
+            $startTimeArray = TimeSlotManager::getTimeStampAsArray($shift['starts_at']);
+            $endTimeArray = TimeSlotManager::getTimeStampAsArray($shift['ends_at']);
 
             $startUnit = TimeSlotManager::getTimeSlot($startTimeArray);
-            $endUnit = $startUnit + ($shift['workhours'] * 60);
+            $endUnit = $startUnit + ($shift['work_hours'] * 60);
 
             for($j = $startUnit; $j < $endUnit; $j++) {
                 $day[$j] += 1;

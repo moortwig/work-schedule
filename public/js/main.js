@@ -1,11 +1,11 @@
 var app = {
 
-	baseUrl: 'http://work-schedule.dev/api/',
+	baseUrl: 'http://work-schedule.utv/api/',
 
 	init: function() {
 		app.getShifts();
 		app.getTotalWorkedHours();
-		app.getBonusMinutes();
+		// app.getBonusMinutes();
 	},
 
 	getShifts: function() {
@@ -16,7 +16,6 @@ var app = {
 		.then(function (response) {
 			shiftContainer.innerHTML = app.renderShiftRows(response.data);
 			app.renderShiftCells(response.data);
-
 		})
 		.catch(function (error) {
 			app.renderErrorMessage(error);
