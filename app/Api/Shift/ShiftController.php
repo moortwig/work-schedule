@@ -2,7 +2,7 @@
 
 namespace App\Api\Shift;
 
-use App\Api\Shift\ShiftRepository as Repository;
+use App\Api\Shift\Interfaces\ShiftRepositoryInterface as Repository;
 use App\Http\Controllers\Controller;
 use App\Wfm\Managers\TimeSlotManager;
 use Illuminate\Http\Request;

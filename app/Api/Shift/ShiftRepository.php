@@ -3,9 +3,10 @@
 namespace App\Api\Shift;
 
 use Illuminate\Support\Collection;
+use App\Api\Shift\Interfaces\ShiftRepositoryInterface;
 use App\Api\Shift\Shift as Model;
 
-class ShiftRepository
+class ShiftRepository implements ShiftRepositoryInterface
 {
 	protected $model;
 
@@ -66,7 +67,7 @@ class ShiftRepository
     	return $totalShifts;
     }
 
-    protected function mapShiftsByDayPerStaff(array $shifts) {
+    public function mapShiftsByDayPerStaff(array $shifts) {
     	return array_map(function($row) {
     		if (is_null($row['starts_at']) || is_null($row['ends_at'])) {
     			return null;
